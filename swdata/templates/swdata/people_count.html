@@ -1,0 +1,22 @@
+{% extends "swdata/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="mb-4" style="display: flex; align-items: flex-end;">
+    <div id="filename-header" class="collections-header font-300">{{ filename }}</div>
+    <button class="ml-3 btn btn-success">
+        <a class="link-no-style text-white"href="{% url 'people' filename %}">Log view</a>
+    </button>
+    <button class="ml-3 btn btn-success">
+        <a class="link-no-style text-white" href="{% url 'file-list' %}">Main page</a>
+    </button>
+</div>
+<div class="mb-2">
+    {% for header in headers %}
+        <button data-state="off" class="btn btn-outline-secondary m-1" onclick="toggleParameter(this)">{{ header }}</button>
+    {% endfor %}
+</div>
+<table class="table table-striped font-300" id="data-container">
+</table>
+<script src="{% static 'swdata/people_count.js' %}"></script>
+{% endblock %}

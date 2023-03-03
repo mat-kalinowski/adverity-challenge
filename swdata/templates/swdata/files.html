@@ -1,0 +1,18 @@
+{% extends "swdata/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="mb-4" style="display: flex; align-items: flex-end;">
+        <div class="collections-header lato-font-300">Collections</div>
+        <form method="GET" action="{% url 'file-fetch' %}">
+            <button class="ml-3 btn btn-success">Fetch</button>
+        </form>
+    </div>
+    <ul id="file-list" class="list-group">
+    {% for file in object_list %}
+        <li class="list-group-item font-300"><a href="{% url 'people' file.name %}">{{ file.date }}</a></li>
+    {% empty %}
+        <li class="list-group-item">No files yet</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
